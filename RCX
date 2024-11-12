@@ -1,0 +1,314 @@
+-- Made By Me : bkmd_ytt on Discord.
+-- Our Discrd Server : https://discord.gg/bKkR5vudYf
+
+-- Check the device type such as Pc or Mobile - EZ
+local userInputService = game:GetService("UserInputService")
+
+-- Check if the user is on mobile
+local isMobile = userInputService.TouchEnabled 
+
+
+local screenGui = Instance.new("ScreenGui")
+screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+
+local mainFrame = Instance.new("Frame")
+if isMobile then
+    -- Mobile version: smaller UI
+    mainFrame.Size = UDim2.new(0, 240, 0, 300)  -- Smaller size for Mobile
+    mainFrame.Position = UDim2.new(0.5, -120, 0.5, -150)
+else
+    -- PC version: normal size
+    mainFrame.Size = UDim2.new(0, 380, 0, 450)  -- Normal size for PC
+    mainFrame.Position = UDim2.new(0.5, -190, 0.5, -225)
+end
+mainFrame.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+mainFrame.BorderSizePixel = 0
+mainFrame.Parent = screenGui
+mainFrame.Active = true 
+mainFrame.Draggable = true 
+
+
+-- Note Below the Main UI
+  local lowerNote = Instance.new("TextLabel")
+lowerNote.Text = "Change The Number 1 To Whatever You Want\nAnd You Can Get The Numbers By See The Rebirth Buttons,\nAnd count The Buttons In The Rebirth Menu.For Example : 1 its do The 1 Rebirth and 2 its do The 5 Rebirth."
+lowerNote.Size = UDim2.new(0.8, 0, 0.20, 0)
+lowerNote.Position = UDim2.new(0.1, 0, 1.05, 0)  -- Positioned below the main UI
+lowerNote.TextColor3 = Color3.fromRGB(255, 255, 255)  -- White text
+lowerNote.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+lowerNote.BackgroundTransparency = 0.6
+lowerNote.TextSize = 14
+lowerNote.TextWrapped = true
+lowerNote.Font = Enum.Font.Gotham
+lowerNote.Parent = mainFrame
+
+-- Corner and Gradient for Lower Note
+  local lowerNoteCorner = Instance.new("UICorner")
+lowerNoteCorner.CornerRadius = UDim.new(0, 12)
+lowerNoteCorner.Parent = lowerNote
+
+local lowerNoteGradient = Instance.new("UIGradient")
+lowerNoteGradient.Color = ColorSequence.new({
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(75, 0, 130)),  -- Purple
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 0, 0))    -- Red
+})
+lowerNoteGradient.Parent = lowerNote
+
+-- Additional Note Above Main UI
+  local upperNote = Instance.new("TextLabel")
+upperNote.Text = " Made By Me : bkmd_ytt on Discord. Our Discord Server : https://discord.gg/bKkR5vudYf"
+upperNote.Size = UDim2.new(0.8, 1, 0.11
+, 1)
+upperNote.Position = UDim2.new(0.1, 0, -0.15, 0)  -- Positioned above the main UI
+upperNote.TextColor3 = Color3.fromRGB(255, 255, 255)  -- White text
+upperNote.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+upperNote.BackgroundTransparency = 0.6
+upperNote.TextSize = 16
+upperNote.TextWrapped = true
+upperNote.Font = Enum.Font.Gotham
+upperNote.Parent = mainFrame
+
+-- Corner and Gradient for Upper Note
+  local upperNoteCorner = Instance.new("UICorner")
+upperNoteCorner.CornerRadius = UDim.new(0, 12)
+upperNoteCorner.Parent = upperNote
+
+  local upperNoteGradient = Instance.new("UIGradient")
+upperNoteGradient.Color = ColorSequence.new({
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(75, 0, 130)),  -- Purple
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 0, 0))    -- Red
+})
+upperNoteGradient.Parent = upperNote
+
+
+  local shadow = Instance.new("Frame")
+shadow.Size = UDim2.new(1, 16, 1, 16)
+shadow.Position = UDim2.new(0, -8, 0, -8)
+shadow.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+shadow.BackgroundTransparency = 0.4  -- Slightly lighter transparency
+shadow.ZIndex = mainFrame.ZIndex - 1
+shadow.Parent = mainFrame
+
+
+  local cornerRadius = Instance.new("UICorner")
+cornerRadius.CornerRadius = UDim.new(0, 24)  
+cornerRadius.Parent = mainFrame
+
+
+  local mixedGradient = Instance.new("UIGradient")
+mixedGradient.Color = ColorSequence.new({
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(75, 0, 130)),  -- Purple
+    ColorSequenceKeypoint.new(0.5, Color3.fromRGB(255, 0, 0)), -- Red
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 0, 255))    -- Blue
+})
+mixedGradient.Parent = mainFrame
+
+-- Auto Clicker Frame (inside the main UI)
+  local autoClickFrame = Instance.new("Frame")
+autoClickFrame.Size = UDim2.new(1, 0, 0.4, 0)
+autoClickFrame.Position = UDim2.new(0, 0, 0.1, 0)  -- Positioned below the note frame
+autoClickFrame.BackgroundTransparency = 1  -- Transparent
+autoClickFrame.Parent = mainFrame
+
+  local autoClickLabel = Instance.new("TextLabel")
+autoClickLabel.Text = "Auto Clicker"
+autoClickLabel.Size = UDim2.new(1, 0, 0.2, 0)
+autoClickLabel.Position = UDim2.new(0, 0, 0, 0)
+autoClickLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+autoClickLabel.BackgroundTransparency = 1
+autoClickLabel.TextSize = 28
+autoClickLabel.Font = Enum.Font.GothamBold
+autoClickLabel.TextStrokeTransparency = 0.7
+autoClickLabel.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
+autoClickLabel.Parent = autoClickFrame
+
+  local autoClickButton = Instance.new("TextButton")
+autoClickButton.Text = "Start Auto Click"
+autoClickButton.Size = UDim2.new(0.8, 0, 0.3, 0)
+autoClickButton.Position = UDim2.new(0.1, 0, 0.3, 0)
+autoClickButton.BackgroundColor3 = Color3.fromRGB(75, 0, 130)  -- Purple base color
+autoClickButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+autoClickButton.TextSize = 20
+autoClickButton.TextStrokeTransparency = 0.8
+autoClickButton.Font = Enum.Font.GothamBold
+autoClickButton.Parent = autoClickFrame
+
+
+  local autoClickButtonCorner = Instance.new("UICorner")
+autoClickButtonCorner.CornerRadius = UDim.new(0, 12)
+autoClickButtonCorner.Parent = autoClickButton
+
+
+  local autoClickButtonGradient = Instance.new("UIGradient")
+autoClickButtonGradient.Color = ColorSequence.new({
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(75, 0, 130)),   -- Purple
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 0, 255))     -- Blue
+})
+autoClickButtonGradient.Parent = autoClickButton
+
+
+autoClickButton.MouseEnter:Connect(function()
+    autoClickButton:TweenSize(UDim2.new(0.8, 0, 0.3, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.2, true)
+    autoClickButton.BackgroundColor3 = Color3.fromRGB(85, 0, 160)  -- Lighter purple
+end)
+
+autoClickButton.MouseLeave:Connect(function()
+    autoClickButton:TweenSize(UDim2.new(0.8, 0, 0.3, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.2, true)
+    autoClickButton.BackgroundColor3 = Color3.fromRGB(75, 0, 130)  -- Default purple
+end)
+
+-- Auto Clicker state (on/off)
+  local autoClicking = false
+autoClickButton.MouseButton1Click:Connect(function()
+    autoClicking = not autoClicking
+    if autoClicking then
+        autoClickButton.Text = "Stop Auto Click"
+        while autoClicking do
+            game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("Click4"):FireServer()
+            wait()
+        end
+    else
+        autoClickButton.Text = "Start Auto Click"
+    end
+end)
+
+
+  local autoRebirthFrame = Instance.new("Frame")
+autoRebirthFrame.Size = UDim2.new(1, 0, 0.6, 0)
+autoRebirthFrame.Position = UDim2.new(0, 0, 0.4, 0)
+autoRebirthFrame.BackgroundTransparency = 1  -- Transparent
+autoRebirthFrame.Parent = mainFrame
+
+  local autoRebirthLabel = Instance.new("TextLabel")
+autoRebirthLabel.Text = "Auto Rebirth"
+autoRebirthLabel.Size = UDim2.new(1, 0, 0.2, 0)
+autoRebirthLabel.Position = UDim2.new(0, 0, 0, 0)
+autoRebirthLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+autoRebirthLabel.BackgroundTransparency = 1
+autoRebirthLabel.TextSize = 28
+autoRebirthLabel.Font = Enum.Font.GothamBold
+autoRebirthLabel.TextStrokeTransparency = 0.7
+autoRebirthLabel.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
+autoRebirthLabel.Parent = autoRebirthFrame
+
+
+  local rebirthInput = Instance.new("TextBox")
+rebirthInput.Size = UDim2.new(0.8, 0, 0.3, 0)
+rebirthInput.Position = UDim2.new(0.1, 0, 0.3, 0)
+rebirthInput.PlaceholderText = "Enter Rebirth Number"
+rebirthInput.TextColor3 = Color3.fromRGB(255, 255, 255)
+rebirthInput.Text = ""  -- Default value
+rebirthInput.TextSize = 18
+rebirthInput.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+rebirthInput.Font = Enum.Font.Gotham
+rebirthInput.Parent = autoRebirthFrame
+
+
+  local rebirthInputCorner = Instance.new("UICorner")
+rebirthInputCorner.CornerRadius = UDim.new(0, 12)
+rebirthInputCorner.Parent = rebirthInput
+
+
+
+
+-- Auto Rebirth state (on/off)
+ local autoRebirthing = false
+   local autoRebirthButton = Instance.new("TextButton")
+autoRebirthButton.Text = "Start Auto Rebirth"
+autoRebirthButton.Size = UDim2.new(0.8, 0, 0.3, 0)
+autoRebirthButton.Position = UDim2.new(0.1, 0, 0.65, 0)
+autoRebirthButton.BackgroundColor3 = Color3.fromRGB(75, 0, 130)  -- Purple base color
+autoRebirthButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+autoRebirthButton.TextSize = 20
+autoRebirthButton.TextStrokeTransparency = 0.8
+autoRebirthButton.Font = Enum.Font.GothamBold
+autoRebirthButton.Parent = autoRebirthFrame
+
+
+  local autoRebirthButtonCorner = Instance.new("UICorner")
+autoRebirthButtonCorner.CornerRadius = UDim.new(0, 12)
+autoRebirthButtonCorner.Parent = autoRebirthButton
+
+
+  local autoRebirthButtonGradient = Instance.new("UIGradient")
+autoRebirthButtonGradient.Color = ColorSequence.new({
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(75, 0, 130)),   -- Purple
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 0, 0))     -- Red
+})
+autoRebirthButtonGradient.Parent = autoRebirthButton
+
+
+autoRebirthButton.MouseEnter:Connect(function()
+    autoRebirthButton:TweenSize(UDim2.new(0.8, 0, 0.3, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.2, true)
+    autoRebirthButton.BackgroundColor3 = Color3.fromRGB(85, 0, 160)  -- Lighter purple
+end)
+
+autoRebirthButton.MouseLeave:Connect(function()
+    autoRebirthButton:TweenSize(UDim2.new(0.8, 0, 0.3, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.2, true)
+    autoRebirthButton.BackgroundColor3 = Color3.fromRGB(75, 0, 130)  -- Default purple
+end)
+
+-- Auto Rebirth functionality
+autoRebirthButton.MouseButton1Click:Connect(function()
+    autoRebirthing = not autoRebirthing
+    if autoRebirthing then
+        autoRebirthButton.Text = "Stop Auto Rebirth"
+        while autoRebirthing do
+            local rebirthAmount = tonumber(rebirthInput.Text)
+            if rebirthAmount then
+                game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("Rebirth"):FireServer(rebirthAmount)
+            end
+            wait() -- u can change it but this the best.
+        end
+    else
+        autoRebirthButton.Text = "Start Auto Rebirth"
+    end
+end)
+
+-- Hide/Show UI
+  local toggleButton = Instance.new("TextButton")
+toggleButton.Text = "Hide UI"
+toggleButton.Size = UDim2.new(0.15, 0, 0.08, 0)
+toggleButton.Position = UDim2.new(0.85, -50, 0, 0)
+toggleButton.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+toggleButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+toggleButton.TextSize = 16
+toggleButton.Font = Enum.Font.GothamBold
+toggleButton.Parent = screenGui
+
+toggleButton.Active = true  -- Makes it interactive
+toggleButton.Draggable = true  -- Enable draggable behavior
+
+
+  local toggleButtonCorner = Instance.new("UICorner")
+toggleButtonCorner.CornerRadius = UDim.new(0, 12)
+toggleButtonCorner.Parent = toggleButton
+
+  local toggleButtonGradient = Instance.new("UIGradient")
+toggleButtonGradient.Color = ColorSequence.new({
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(75, 0, 130)),   -- Purple
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 0, 0))        -- Black
+})
+toggleButtonGradient.Parent = toggleButton
+
+
+toggleButton.MouseEnter:Connect(function()
+    toggleButton:TweenSize(UDim2.new(0.15, 0, 0.08, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.2, true)
+    toggleButton.BackgroundColor3 = Color3.fromRGB(85, 0, 160)  -- Lighter purple on hover
+end)
+
+toggleButton.MouseLeave:Connect(function()
+    toggleButton:TweenSize(UDim2.new(0.15, 0, 0.08, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.2, true)
+    toggleButton.BackgroundColor3 = Color3.fromRGB(30, 30, 30)  -- Default color
+end)
+
+
+toggleButton.MouseButton1Click:Connect(function()
+    if mainFrame.Visible then
+        mainFrame.Visible = false
+        toggleButton.Text = "Show UI"
+    else
+        mainFrame.Visible = true
+        toggleButton.Text = "Hide UI"
+    end
+end)

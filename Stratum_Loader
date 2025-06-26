@@ -1,0 +1,11 @@
+local gameIDS = {
+    [109983668079237] = "Steal_a_Brainrot"
+}
+
+local currentgame = gameIDS[game.PlaceId]
+
+if currentgame then
+    if currentgame == "Steal_a_Brainrot" then
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/BKmDYT/scripts/refs/heads/main/Steal_a_Brainrot.lua"))()
+    end
+end

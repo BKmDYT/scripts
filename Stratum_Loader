@@ -1,5 +1,6 @@
 local gameIDS = {
-    [109983668079237] = "Steal_a_Brainrot"
+    [109983668079237] = "Steal_a_Brainrot",
+    [74866348003583] = "Steal_a_Pet"
 }
 
 local currentgame = gameIDS[game.PlaceId]
@@ -7,5 +8,7 @@ local currentgame = gameIDS[game.PlaceId]
 if currentgame then
     if currentgame == "Steal_a_Brainrot" then
         loadstring(game:HttpGet("https://raw.githubusercontent.com/BKmDYT/scripts/refs/heads/main/Steal_a_Brainrot.lua"))()
+    elseif currentgame == "Steal_a_Pet" then
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/BKmDYT/scripts/refs/heads/main/Steal_a_Pet.lua"))()
     end
 end

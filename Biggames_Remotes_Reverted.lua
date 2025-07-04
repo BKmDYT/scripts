@@ -1,4 +1,3 @@
-
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Networking = require(ReplicatedStorage.Library.Client.Network)
 local Senv = getsenv(ReplicatedStorage.Library.Client.Network)
